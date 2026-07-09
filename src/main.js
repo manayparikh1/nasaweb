@@ -65,7 +65,7 @@ const updateGallery = async (dateValue = "") => {
 
   try {
     const data = await fetchSpaceData(dateValue);
-
+    
     // Update the date picker to match the data being shown
     elements.dateInput.value = data.date;
 
@@ -81,8 +81,8 @@ const updateGallery = async (dateValue = "") => {
       <article class="card">
         <div class="media-viewport">
           ${isVideo
-        ? `<iframe src="${mediaUrl}" allowfullscreen></iframe>`
-        : `<img src="${mediaUrl}" alt="${data.title}" id="space-image">`}
+            ? `<iframe src="${mediaUrl}" allowfullscreen></iframe>`
+            : `<img src="${mediaUrl}" alt="${data.title}" id="space-image">`}
         </div>
         <div class="card-info">
           <div class="meta">
@@ -147,7 +147,7 @@ const startApp = () => {
   elements.dateInput.max = getFormattedDate(new Date());
 
   // 4. ATTACH EVENT LISTENERS
-
+  
   // Change date via picker
   elements.dateInput.addEventListener("change", (e) => {
     if (e.target.value) updateGallery(e.target.value);
@@ -169,8 +169,8 @@ const startApp = () => {
     // Reset animation if it's already running
     elements.rocket.classList.remove("rocket-fly");
     // Trigger reflow to restart animation
-    void elements.rocket.offsetWidth;
-
+    void elements.rocket.offsetWidth; 
+    
     elements.rocket.classList.add("rocket-fly");
 
     // Clean up class after animation ends (3 seconds)

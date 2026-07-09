@@ -1,169 +1,219 @@
-/* 1. GLOBAL VARIABLES */
-:root {
-  --bg: #020617;
-  --accent: #38bdf8;
-  --glass: rgba(15, 23, 42, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --text-main: #f8fafc;
-  /* Define the font here */
-  --font-main: "Comic Sans MS", "Comic Sans", cursive;
-}
+/*  */
 
-/* 2. BASE STYLES */
-html,
-body {
-  background-color: var(--bg);
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: var(--text-main);
-  /* APPLY THE FONT TO EVERYTHING */
-  font-family: var(--font-main);
-  overflow-x: hidden;
 }
 
-/* Ensure buttons and inputs also use the font */
-input,
-button,
-h1,
-h2,
-h3,
-label {
-  font-family: var(--font-main);
+:root {
+  --ink: #1b1b1b;
+  --white: #ffffff;
+  --accent: #ff6b6b;
+  --light-blue: #e0f2ff;
+  --yellow: #ffeb3b;
 }
 
-/* 3. STAR BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, #fff 1.5px, transparent 1.5px);
-  background-size: 80px 80px;
-  opacity: 0.1;
-  z-index: -1;
-  /* Stay behind everything */
-  pointer-events: none;
-  animation: twinkle 4s infinite alternate;
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes twinkle {
-  from {
-    opacity: 0.05;
-    transform: scale(1);
-  }
-
-  to {
-    opacity: 0.2;
-    transform: scale(1.1);
-  }
+body {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  color: var(--ink);
+  background: #f0f0f0;
+  line-height: 1.6;
+  min-height: 100vh;
 }
 
-#app {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4rem 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-/* 4. HEADER & TEXT */
+/* HEADER */
 header {
+  background: var(--white);
+  border-bottom: 4px solid #000;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: var(--ink);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: bold;
+  border: 2px solid #000;
+  padding: 8px 12px;
+  background: var(--white);
+  transition: none;
+}
+
+nav a:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* SECTIONS */
+section {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 25px;
+  background: var(--white);
+  border: 3px solid #000;
+}
+
+section h2 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+section p {
+  margin: 12px 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* HERO */
+.hero {
   text-align: center;
-  margin-bottom: 3rem;
+  background: var(--yellow);
+  border: 4px solid #000;
+  padding: 40px 20px;
 }
 
-h1 {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  background: linear-gradient(to right, #fff, var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
+.hero h2 {
+  color: #000;
+  font-size: 2rem;
+  text-decoration: none;
 }
 
-/* 5. CONTROLS & BUTTONS */
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* CONTROLS SECTION */
 .controls {
   display: flex;
-  gap: 1.5rem;
+  gap: 15px;
   justify-content: center;
   align-items: flex-end;
-  background: var(--glass);
-  backdrop-filter: blur(15px);
-  padding: 2rem;
-  border-radius: 24px;
-  border: 1px solid var(--glass-border);
-  margin-bottom: 3rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.button-group {
-  display: flex;
-  gap: 12px;
+  background: var(--light-blue);
+  padding: 20px;
+  border: 3px solid #000;
+  flex-wrap: wrap;
 }
 
 .input-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 5px;
+}
+
+.input-wrapper label {
+  font-size: 0.9rem;
+  color: var(--ink);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 input[type="date"] {
-  background: #000;
-  color: white;
-  border: 1px solid var(--glass-border);
-  padding: 0.8rem;
-  border-radius: 12px;
-  color-scheme: dark;
+  background: var(--white);
+  color: var(--ink);
+  border: 2px solid #000;
+  padding: 8px 12px;
+  font-family: "Comic Sans MS", cursive;
+  font-weight: bold;
 }
 
-/* Button Styles */
+input[type="date"]:focus {
+  outline: 2px solid var(--accent);
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* BUTTONS */
 .btn-primary,
 .btn-outline,
 .btn-launch {
-  padding: 0.8rem 1.5rem;
-  border-radius: 12px;
-  font-weight: 800;
+  padding: 10px 18px;
+  border: 2px solid #000;
+  font-weight: 900;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: none;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 0.95rem;
+  background: var(--white);
+  transition: none;
+  text-transform: uppercase;
 }
 
 .btn-primary {
   background: var(--accent);
-  color: #000;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #000;
+  color: #fff;
 }
 
 .btn-outline {
-  background: transparent;
-  color: var(--accent);
+  background: var(--white);
+  color: var(--ink);
   border: 2px solid var(--accent);
 }
 
+.btn-outline:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
 .btn-launch {
-  background: linear-gradient(135deg, #ff4500, #ff8c00);
-  color: white;
-  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+  background: #ffaa00;
+  color: #000;
 }
 
-.btn-primary:hover,
-.btn-outline:hover,
 .btn-launch:hover {
-  transform: translateY(-3px) scale(1.05);
+  background: #000;
+  color: #fff;
 }
 
-/* 6. CONTENT CARD */
+/* CARD */
 .card {
-  background: var(--glass);
-  border-radius: 32px;
+  background: var(--white);
+  border: 3px solid #000;
   overflow: hidden;
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
 .media-viewport {
   width: 100%;
   aspect-ratio: 16/9;
-  background: #000;
+  background: #e8e8e8;
+  border-bottom: 2px solid #000;
 }
 
 #space-image,
@@ -175,40 +225,62 @@ iframe {
 }
 
 .card-info {
-  padding: 3rem;
+  padding: 25px;
+  border-top: 2px solid #000;
+}
+
+.meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 
 .badge {
-  background: rgba(56, 189, 248, 0.2);
-  color: var(--accent);
-  padding: 0.5rem 1.2rem;
-  border-radius: 100px;
-  font-size: 0.9rem;
+  background: var(--light-blue);
+  color: var(--ink);
+  padding: 6px 12px;
+  border: 2px solid #000;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.copyright {
+  color: #666;
+  font-size: 0.85rem;
   font-weight: bold;
 }
 
-.description {
-  color: #cbd5e1;
-  line-height: 1.8;
-  margin-top: 1.5rem;
-  font-size: 1.1rem;
-  text-align: left;
+.card h2 {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin: 10px 0;
+  text-decoration: underline;
 }
 
-/* 7. LOADER */
+.description {
+  color: #333;
+  line-height: 1.8;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  font-family: "Georgia", serif;
+}
+
+/* LOADER */
 .loader-container {
   text-align: center;
-  padding: 5rem;
+  padding: 40px 20px;
 }
 
 .orbit-spinner {
   width: 60px;
   height: 60px;
-  border: 4px solid rgba(255, 255, 255, 0.1);
-  border-top-color: var(--accent);
+  border: 4px solid var(--accent);
+  border-top-color: #000;
   border-radius: 50%;
-  margin: 0 auto 1rem;
-  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+  animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
@@ -217,23 +289,40 @@ iframe {
   }
 }
 
-/* 8. THE ROCKET ANIMATION */
+/* ERROR STATE */
+.error-state {
+  text-align: center;
+  padding: 30px;
+  border: 3px solid var(--accent);
+  background: #ffe0e0;
+  border-radius: 0;
+}
+
+.error-state h3 {
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+.error-state p {
+  color: var(--ink);
+  margin-bottom: 15px;
+}
+
+/* ROCKET */
 #rocket {
   position: fixed;
   bottom: -400px;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px !important;
-  /* Force the width */
+  width: 100px !important;
   height: auto !important;
-  /* Keep the aspect ratio */
   z-index: 10000;
   display: block !important;
-  /* Ensure it's not hidden */
 }
 
 .rocket-fly {
-  animation: launchRocket 2.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+  animation: launchRocket 2.8s ease-out forwards;
 }
 
 @keyframes launchRocket {
@@ -243,27 +332,135 @@ iframe {
 
   15% {
     bottom: 20px;
-    filter: drop-shadow(0 0 20px #ff4500);
   }
 
   100% {
     bottom: 150vh;
-    filter: drop-shadow(0 0 50px #ffae00);
   }
 }
 
-/* Responsiveness */
-@media (max-width: 800px) {
+/* FOOTER */
+footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+  margin-top: 30px;
+  border-top: 4px solid var(--accent);
+}
+
+footer h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+  }
+
+  section {
+    margin: 15px 10px;
+    padding: 15px;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+
   .controls {
     flex-direction: column;
-    align-items: stretch;
   }
 
   .button-group {
     flex-direction: column;
+    width: 100%;
   }
 
-  #app {
-    padding: 2rem 1rem;
+  .btn-primary,
+  .btn-outline,
+  .btn-launch {
+    width: 100%;
   }
+}
+
+/* DARK MODE */
+body.dark-mode {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode section {
+  background: #2a2a2a;
+  border-color: #fff;
+}
+
+body.dark-mode header {
+  background: #1a1a1a;
+  border-bottom-color: #fff;
+}
+
+body.dark-mode nav a {
+  color: #e0e0e0;
+  border-color: #fff;
+  background: #2a2a2a;
+}
+
+body.dark-mode nav a:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+body.dark-mode section h2 {
+  color: #ff8888;
+}
+
+body.dark-mode .hero {
+  background: var(--accent);
+  color: #fff;
+}
+
+body.dark-mode .hero h2 {
+  color: #fff;
+}
+
+body.dark-mode .card {
+  background: #3a3a3a;
+  border-color: #fff;
+}
+
+body.dark-mode .card-info {
+  border-top-color: #fff;
+  color: #e0e0e0;
+}
+
+body.dark-mode .description {
+  color: #ccc;
+}
+
+body.dark-mode .badge {
+  background: #1a1a2e;
+  color: #fff;
+  border-color: #fff;
+}
+
+body.dark-mode footer {
+  background: #0a0a0a;
+  border-color: var(--accent);
 }
